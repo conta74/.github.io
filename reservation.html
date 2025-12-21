@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réservation - Location Contamines-Montjoie</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
+        header { background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%); color: white; padding: 2rem 0; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        header p { font-size: 1.2rem; opacity: 0.9; }
+        nav { background: #34495e; padding: 1rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; }
+        nav a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s; font-size: 1.1rem; }
+        nav a:hover { color: #3498db; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        section { margin: 3rem 0; padding: 2rem; background: white; border-radius: 10px; box-shadow: 0 2px 15px rgba(0,0,0,0.1); }
+        h2 { color: #2c3e50; margin-bottom: 1.5rem; font-size: 2rem; border-bottom: 3px solid #3498db; padding-bottom: 0.5rem; }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+        .info-card { background: #ecf0f1; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #3498db; }
+        .info-card h3 { color: #2c3e50; margin-bottom: 0.5rem; }
+        .conseil-item { background: #f8f9fa; padding: 1rem; margin: 1rem 0; border-radius: 8px; border-left: 4px solid #27ae60; }
+        .conseil-item h3 { color: #27ae60; margin-bottom: 0.5rem; }
+        footer { background: #2c3e50; color: white; text-align: center; padding: 2rem; margin-top: 3rem; }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        table th { background: #3498db; color: white; padding: 1rem; text-align: center; }
+        table td { padding: 1rem; border: 1px solid #ddd; text-align: center; }
+        table tr:nth-child(even) { background: #f8f9fa; }
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8rem; }
+            nav ul { gap: 1rem; }
+            nav a { font-size: 1rem; }
+            .container { padding: 1rem; }
+            section { padding: 1.5rem; margin: 2rem 0; }
+            h2 { font-size: 1.5rem; }
+            .info-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+            table { font-size: 0.85rem; }
+            table th, table td { padding: 0.5rem; }
+        }
+        @media (max-width: 480px) {
+            header h1 { font-size: 1.5rem; }
+            nav ul { flex-direction: column; gap: 0.5rem; text-align: center; }
+            section { padding: 1rem; }
+            h2 { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🏔️ Appartement Les Contamines-Montjoie</h1>
+        <p>Votre refuge au cœur des Alpes</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="activites.html">Activités</a></li>
+            <li><a href="pratique.html">Infos Pratiques</a></li>
+            <li><a href="reservation.html">Réservation</a></li>
+            <li><a href="acces.html">Accès & Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- TARIFS -->
+        <section id="tarifs">
+            <h2>💰 Tarifs de Location</h2>
+            
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Période</th>
+                            <th>Prix / semaine</th>
+                            <th>Prix / nuit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>🔴 Haute saison hiver</strong><br><small>Noël, Nouvel An, Février</small></td>
+                            <td><strong>650€</strong></td>
+                            <td>95€</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🟠 Moyenne saison</strong><br><small>Janvier, Mars, Été</small></td>
+                            <td><strong>450€</strong></td>
+                            <td>65€</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🟢 Basse saison</strong><br><small>Avril, Mai, Automne</small></td>
+                            <td><strong>350€</strong></td>
+                            <td>50€</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="background: #e8f5e9; padding: 1rem; border-radius: 8px; margin-top: 1.5rem;">
+                <p style="color: #2e7d32;">
+                    <strong>✅ Inclus dans le tarif :</strong> WiFi Fibre, chauffage, électricité, eau, linge de lit, parking, local à ski
+                </p>
+            </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section id="services">
+            <h2>🛎️ Services</h2>
+            
+            <div class="conseil-item" style="border-left: 4px solid #27ae60;">
+                <h3>✅ Services INCLUS</h3>
+                <p>• <strong>Linge de maison</strong> : draps, housses, taies d'oreiller<br>
+                • <strong>WiFi Fibre</strong> : Internet haut débit illimité<br>
+                • <strong>Charges</strong> : électricité, eau, chauffage<br>
+                • <strong>Parking</strong> : 1 place extérieure avec télécommande<br>
+                • <strong>Local à skis</strong> : casier personnel au sous-sol</p>
+            </div>
+
+            <div class="conseil-item" style="border-left: 4px solid #3498db;">
+                <h3>💶 Services EN OPTION</h3>
+                <p><strong>Ménage de fin de séjour</strong> : 80€<br>
+                <em>Nettoyage complet, changement des draps</em><br><br>
+                
+                <strong>Linge de toilette</strong> : 10€/personne<br>
+                <em>Serviettes de bain et de toilette</em><br><br>
+                
+                <strong>Kit bébé</strong> : 30€/séjour<br>
+                <em>Lit parapluie + chaise haute + baignoire</em><br><br>
+                
+                <strong>Ménage mi-séjour</strong> : 50€<br>
+                <em>Pour séjours de 2 semaines et plus</em></p>
+            </div>
+
+            <div class="conseil-item" style="border-left: 4px solid #e74c3c;">
+                <h3>⚠️ À votre charge</h3>
+                <p>• Ménage de fin de séjour si non pris en option<br>
+                • Taxe de séjour : 1,50€/adulte/nuit<br>
+                • Forfaits de ski<br>
+                • Location de matériel<br>
+                • Caution : 500€</p>
+            </div>
+        </section>
+
+        <!-- RÉSERVATION -->
+        <section id="reservation">
+            <h2>📅 Réserver</h2>
+            
+            <div style="background: #e3f2fd; padding: 2rem; border-radius: 10px; border-left: 4px solid #2196F3; margin-bottom: 2rem;">
+                <h3 style="color: #1565C0; margin-bottom: 1rem;">📝 Faire une demande de réservation</h3>
+                <p style="color: #1565C0; margin-bottom: 1.5rem;">
+                    Cliquez sur le bouton ci-dessous pour accéder au formulaire de réservation :
+                </p>
+                <a href="https://0gm9i49g.forms.app/formulaire-de-demande-de-bail-de-location" target="_blank" style="background: #27ae60; color: white; padding: 1rem 2rem; font-size: 1.1rem; border-radius: 5px; text-decoration: none; display: inline-block; font-weight: bold;">
+                    📝 Formulaire de réservation
+                </a>
+            </div>
+
+            <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                <h3 style="color: #2c3e50; margin-bottom: 1rem;">📆 Calendrier des disponibilités</h3>
+                <p style="color: #7f8c8d; margin-bottom: 1rem;">
+                    <strong>Légende :</strong> 🟢 Disponible | 🟠 En attente | 🔵 Réservé
+                </p>
+                <div style="background: white; padding: 2rem; border: 2px dashed #ddd; border-radius: 5px; text-align: center;">
+                    <p style="color: #95a5a6;">📅 Votre calendrier Google apparaîtra ici</p>
+                    <p style="color: #95a5a6; font-size: 0.9rem; margin-top: 1rem;">
+                        (Intégrez votre Google Calendar public)
+                    </p>
+                </div>
+            </div>
+
+            <div style="background: #fff3cd; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ffc107; margin-top: 2rem;">
+                <h3 style="color: #856404; margin-bottom: 0.5rem;">💳 Modalités de paiement</h3>
+                <p style="color: #856404;">
+                    <strong>Acompte :</strong> 30% à la réservation<br>
+                    <strong>Solde :</strong> 30 jours avant l'arrivée<br>
+                    <strong>Caution :</strong> 500€ (chèque non encaissé ou empreinte CB)<br>
+                    <strong>Mode de paiement :</strong> Virement bancaire (RIB envoyé par email)
+                </p>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <h3 style="color: #2c3e50; margin-bottom: 1rem;">📋 Comment ça marche ?</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>1️⃣ Demande</h3>
+                        <p>Remplissez le formulaire avec vos dates souhaitées</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>2️⃣ Confirmation</h3>
+                        <p>Nous vous répondons sous 24h</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>3️⃣ Acompte</h3>
+                        <p>Versez 30% pour valider</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>4️⃣ C'est réservé !</h3>
+                        <p>Vous recevez le code KeyCafe 48h avant</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Location Contamines-Montjoie - Tous droits réservés</p>
+    </footer>
+</body>
+</html>
