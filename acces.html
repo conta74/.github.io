@@ -1,44 +1,424 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accès & Contact - Location Contamines-Montjoie</title>
+    <title>Location Appartement - Contamines-Montjoie</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
-        header { background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%); color: white; padding: 2rem 0; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        header p { font-size: 1.2rem; opacity: 0.9; }
-        nav { background: #34495e; padding: 1rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; }
-        nav a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s; font-size: 1.1rem; }
-        nav a:hover { color: #3498db; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        section { margin: 3rem 0; padding: 2rem; background: white; border-radius: 10px; box-shadow: 0 2px 15px rgba(0,0,0,0.1); }
-        h2 { color: #2c3e50; margin-bottom: 1.5rem; font-size: 2rem; border-bottom: 3px solid #3498db; padding-bottom: 0.5rem; }
-        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
-        .info-card { background: #ecf0f1; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #3498db; }
-        .info-card h3 { color: #2c3e50; margin-bottom: 0.5rem; }
-        .conseil-item { background: #f8f9fa; padding: 1rem; margin: 1rem 0; border-radius: 8px; border-left: 4px solid #27ae60; }
-        .conseil-item h3 { color: #27ae60; margin-bottom: 0.5rem; }
-        .access-map { background: #f8f9fa; padding: 2rem; border-radius: 8px; margin-top: 1rem; }
-        footer { background: #2c3e50; color: white; text-align: center; padding: 2rem; margin-top: 3rem; }
-        @media (max-width: 768px) {
-            header h1 { font-size: 1.8rem; }
-            nav ul { gap: 1rem; }
-            nav a { font-size: 1rem; }
-            .container { padding: 1rem; }
-            section { padding: 1.5rem; margin: 2rem 0; }
-            h2 { font-size: 1.5rem; }
-            .info-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
-            .access-map pre { font-size: 0.6rem; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #34495e;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        .gallery-categories {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 0.75rem 1.5rem;
+            background: #ecf0f1;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background: #3498db;
+            color: white;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            aspect-ratio: 4/3;
+            background: #ecf0f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item span {
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .info-card {
+            background: #ecf0f1;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        .info-card h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .conseil-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #27ae60;
+        }
+
+        .conseil-item h3 {
+            color: #27ae60;
+            margin-bottom: 0.5rem;
+        }
+
+        .calendar {
+            margin-top: 2rem;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            background: #3498db;
+            padding: 1rem;
+            border-radius: 8px;
+            color: white;
+        }
+
+        .calendar-header button {
+            background: white;
+            color: #3498db;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin-top: 1rem;
+        }
+
+        .day-header {
+            text-align: center;
+            font-weight: bold;
+            padding: 0.5rem;
+            background: #34495e;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #f8f9fa;
+        }
+
+        .day:hover {
+            background: #e9ecef;
+            transform: scale(1.05);
+        }
+
+        .day.empty {
+            background: transparent;
+            border: none;
+            cursor: default;
+        }
+
+        .day.selected {
+            background: #27ae60;
+            color: white;
+            font-weight: bold;
+        }
+
+        .day.pending {
+            background: #f39c12;
+            color: white;
+        }
+
+        .day.validated {
+            background: #9b59b6;
+            color: white;
+        }
+
+        .day.paid {
+            background: #3498db;
+            color: white;
+        }
+
+        .day.reserved {
+            background: #e74c3c;
+            color: white;
+            cursor: not-allowed;
+        }
+
+        .legend {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .ingredients-link {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #27ae60;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        .access-map {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            nav ul {
+                gap: 0.5rem;
+                font-size: 0.9rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            section {
+                padding: 1.5rem;
+                margin: 2rem 0;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .gallery-categories {
+                gap: 0.5rem;
+            }
+
+            .category-btn {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.8rem;
+            }
+
+            .legend {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            table th, table td {
+                padding: 0.5rem !important;
+            }
+
+            .access-map pre {
+                font-size: 0.7rem;
+                overflow-x: auto;
+            }
+
+            #ownerNotes {
+                font-size: 0.8rem;
+                min-height: 300px;
+            }
+        }
+
         @media (max-width: 480px) {
-            header h1 { font-size: 1.5rem; }
-            nav ul { flex-direction: column; gap: 0.5rem; text-align: center; }
-            section { padding: 1rem; }
-            h2 { font-size: 1.3rem; }
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            section {
+                padding: 1rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+
+            .category-btn {
+                padding: 0.5rem;
+                font-size: 0.75rem;
+            }
+
+            .conseil-item {
+                padding: 0.75rem;
+            }
+
+            .info-card {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .info-card h3 {
+                font-size: 0.95rem;
+            }
         }
     </style>
 </head>
@@ -50,83 +430,885 @@
 
     <nav>
         <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="activites.html">Activités</a></li>
-            <li><a href="pratique.html">Infos Pratiques</a></li>
-            <li><a href="reservation.html">Réservation</a></li>
-            <li><a href="acces.html">Accès & Contact</a></li>
+            <li><a href="#presentation">Présentation</a></li>
+            <li><a href="#photos">Photos</a></li>
+            <li><a href="#materiel">Matériel</a></li>
+            <li><a href="#lieu">Le Village</a></li>
+            <li><a href="#avis">Avis</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#reglement">Règlement</a></li>
+            <li><a href="#inventaire">Inventaire</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#infos-utiles">Infos Utiles</a></li>
+            <li><a href="#tarifs">Tarifs</a></li>
+            <li><a href="#acces">Accès</a></li>
+            <li><a href="#reservation">Réservation</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
     <div class="container">
-        <!-- CONTACT -->
-        <section id="contact">
-            <h2>📞 Contact</h2>
+        <section id="presentation">
+            <h2>Présentation</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                Bienvenue dans notre charmant studio situé aux Contamines-Montjoie, village authentique au pied du Mont-Blanc. 
+                Idéal pour les amoureux de la montagne, notre logement vous offre confort et tranquillité, que ce soit pour un séjour 
+                en hiver sur les pistes de ski ou en été pour découvrir les magnifiques sentiers de randonnée.
+            </p>
+            
             <div class="info-grid">
                 <div class="info-card">
-                    <h3>📧 Email</h3>
-                    <p><a href="mailto:cdoninderosiere@gmail.com" style="color: #3498db; font-size: 1.1rem;">cdoninderosiere@gmail.com</a></p>
+                    <h3>🏠 Capacité</h3>
+                    <p>4 personnes</p>
                 </div>
                 <div class="info-card">
-                    <h3>📱 Téléphone</h3>
-                    <p><a href="tel:+33760291960" style="color: #3498db; font-size: 1.1rem;">07 60 29 19 60</a><br>
-                    <small>Disponible 24h/24</small></p>
+                    <h3>🛏️ Couchages</h3>
+                    <p>1 lit double + cabine montagne (2 lits superposés)</p>
                 </div>
                 <div class="info-card">
-                    <h3>📍 Adresse</h3>
-                    <p>130 Impasse du Bonnant<br>
-                    Les Pierres Blanches - Bâtiment F<br>
-                    74170 Les Contamines-Montjoie</p>
+                    <h3>🚿 Salle de bain</h3>
+                    <p>Douche + WC séparé</p>
+                </div>
+                <div class="info-card">
+                    <h3>📏 Surface</h3>
+                    <p>20 m²</p>
                 </div>
             </div>
         </section>
 
-        <!-- ACCÈS -->
-        <section id="acces">
-            <h2>🚗 Comment venir</h2>
+        <section id="photos">
+            <h2>Galerie Photos</h2>
             
-            <div class="access-map">
-                <h3 style="color: #2c3e50;">🚗 Depuis l'autoroute A40</h3>
-                <p style="margin-top: 1rem;">
-                <strong>Sortie 20 : Le Fayet</strong><br><br>
-                1. Prendre la sortie 20 (Le Fayet/Saint-Gervais)<br>
-                2. Au rond-point, direction Les Contamines-Montjoie (D902)<br>
-                3. Continuer sur 12 km<br>
-                4. À l'entrée du village, suivre "Centre village"<br>
-                5. Prendre l'Impasse du Bonnant sur la droite<br>
-                6. Résidence Les Pierres Blanches - <strong>Bâtiment F</strong><br><br>
-                
-                <a href="https://www.google.com/maps/dir/Sortie+20+Le+Fayet+A40/130+Impasse+du+Bonnant+Les+Contamines-Montjoie" target="_blank" style="background: #3498db; color: white; padding: 0.5rem 1rem; border-radius: 5px; text-decoration: none; display: inline-block;">📍 Voir l'itinéraire sur Google Maps</a>
-                </p>
+            <div class="gallery-categories">
+                <button class="category-btn" onclick="filterGallery('interieur')">🏠 Intérieur</button>
+                <button class="category-btn active" onclick="filterGallery('exterieur')">🏔️ Extérieur</button>
+                <button class="category-btn" onclick="filterGallery('alentours')">📍 Alentours</button>
+                <button class="category-btn" onclick="filterGallery('paysage')">🌄 Paysage</button>
+                <button class="category-btn" onclick="filterGallery('loisirs')">🎯 Loisirs</button>
+                <button class="category-btn" onclick="filterGallery('video')">🎥 Vidéo</button>
+                <button class="category-btn" onclick="filterGallery('mode-emploi')">📋 Mode d'emploi</button>
+                <button class="category-btn" onclick="filterGallery('all')">Tout</button>
             </div>
 
-            <div class="info-grid" style="margin-top: 2rem;">
+            <div class="gallery" id="photoGallery">
+                <div class="gallery-item" data-category="interieur">
+                    <span>📷 Intérieur</span>
+                </div>
+                <div class="gallery-item" data-category="exterieur">
+                    <span>📷 Extérieur</span>
+                </div>
+                <div class="gallery-item" data-category="alentours">
+                    <span>📷 Alentours</span>
+                </div>
+                <div class="gallery-item" data-category="paysage">
+                    <span>📷 Paysage</span>
+                </div>
+                <div class="gallery-item" data-category="loisirs">
+                    <span>📷 Loisirs</span>
+                </div>
+                <div class="gallery-item" data-category="video">
+                    <span>🎥 Vidéo</span>
+                </div>
+                <div class="gallery-item" data-category="mode-emploi">
+                    <span>📷 Mode d'emploi</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="materiel">
+            <h2>Inventaire du Matériel</h2>
+            
+            <h3 style="color: #3498db; margin-top: 2rem;">🍳 Cuisine</h3>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Électroménager</h3>
+                    <p>• Plaques électriques x2<br>
+                    • Micro-ondes (1)<br>
+                    • Réfrigérateur top 60cm (1)<br>
+                    • Cafetière Nespresso (1)<br>
+                    • Bouilloire électrique (1)<br>
+                    • Grille-pain (1)<br>
+                    • Raclette (1)<br>
+                    • Fondue savoyarde (1)</p>
+                </div>
+                <div class="info-card">
+                    <h3>Vaisselle & Ustensiles</h3>
+                    <p>• Assiettes complètes (6)<br>
+                    • Verres (6)<br>
+                    • Couverts complets (6)<br>
+                    • Casseroles (2)<br>
+                    • Poêles (2)<br>
+                    • Ustensiles de cuisine</p>
+                </div>
+                <div class="info-card">
+                    <h3>Ingrédients de cuisine</h3>
+                    <p>• Huile d'olive, huile de tournesol<br>
+                    • Vinaigre, moutarde<br>
+                    • Sel, poivre<br>
+                    • Herbes de Provence<br>
+                    • Café, thé<br>
+                    • Sucre, farine<br>
+                    <a href="#" onclick="openIngredientsWindow(); return false;" style="color: #3498db; text-decoration: underline;">→ Voir la liste complète</a></p>
+                </div>
+            </div>
+
+            <h3 style="color: #3498db; margin-top: 2rem;">🛏️ Chambre & Linge</h3>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Literie</h3>
+                    <p>• Lit double 140x200 (1)<br>
+                    • Cabine montagne : Lits superposés 90x200 (2)<br>
+                    • Oreillers (4)<br>
+                    • Couettes (3)<br>
+                    • Couvertures supplémentaires (2)</p>
+                </div>
+                <div class="info-card">
+                    <h3>Linge fourni</h3>
+                    <p>• Draps housse (3 jeux)<br>
+                    • Taies d'oreiller (4)<br>
+                    • Housses de couette (3)<br>
+                    • Serviettes : sur demande uniquement<br>
+                    • Torchons cuisine (6)</p>
+                </div>
+            </div>
+
+            <h3 style="color: #3498db; margin-top: 2rem;">📺 Salon & Multimédia</h3>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Équipement</h3>
+                    <p>• TV écran plat 32"<br>
+                    • Box Internet Fibre</p>
+                </div>
+            </div>
+
+            <h3 style="color: #3498db; margin-top: 2rem;">🧹 Ménage & Entretien</h3>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Matériel disponible</h3>
+                    <p>• Aspirateur (1)<br>
+                    • Balai + pelle (1)<br>
+                    • Serpillière + seau (1)<br>
+                    • Fer à repasser + table (1)<br>
+                    • Étendoir à linge (1)<br>
+                    • Produits d'entretien de base<br>
+                    • Sacs poubelle</p>
+                </div>
+                <div class="info-card">
+                    <h3>Prestations payantes</h3>
+                    <p><strong>Ménage de fin de séjour :</strong> 80€<br>
+                    <em>Nettoyage complet, changement draps et linge</em><br><br>
+                    
+                    <strong>Ménage mi-séjour :</strong> 50€<br>
+                    <em>Pour séjours de 2 semaines et plus</em><br><br>
+                    
+                    <strong>Linge de lit supplémentaire :</strong> 15€/jeu<br>
+                    <em>Changement draps en cours de séjour</em></p>
+                </div>
+            </div>
+
+            <h3 style="color: #3498db; margin-top: 2rem;">🎿 Équipements annexes</h3>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Local à skis</h3>
+                    <p>• Casier personnel<br>
+                    • Porte-skis muraux<br>
+                    • Banc</p>
+                </div>
+                <div class="info-card">
+                    <h3>Parking</h3>
+                    <p>• Place extérieure libre<br>
+                    • Accès fermé par télécommande (bip)<br>
+                    • Stationnement sécurisé</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="lieu">
+            <h2>Les Contamines-Montjoie</h2>
+            
+            <div style="background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%); padding: 2rem; border-radius: 10px; color: white; margin-bottom: 2rem;">
+                <h3 style="color: white; margin-bottom: 1rem;">❄️ EN HIVER</h3>
+            </div>
+
+            <div class="gallery" style="margin-bottom: 2rem;">
+                <div class="gallery-item">
+                    <span>📷 Hiver 1</span>
+                </div>
+                <div class="gallery-item">
+                    <span>📷 Hiver 2</span>
+                </div>
+                <div class="gallery-item">
+                    <span>📷 Hiver 3</span>
+                </div>
+                <div class="gallery-item">
+                    <span>📷 Hiver 4</span>
+                </div>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🎿 Location de matériel</h3>
+                <p><strong>Intersport</strong> - 200m - Tél: 04 50 47 00 00<br>
+                <strong>Sport 2000</strong> - 300m - Tél: 04 50 47 01 01<br>
+                <strong>Skiset</strong> - Front de neige - Tél: 04 50 47 02 02<br>
+                💡 <em>Réservez en ligne pour -20%</em></p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🏫 Écoles de ski</h3>
+                <p><strong>ESF Contamines</strong> - Cours collectifs et particuliers<br>
+                <strong>ESI Freedom</strong> - École indépendante<br>
+                <strong>Jardin des neiges</strong> - Pour les 3-6 ans</p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🌨️ Autres activités hivernales</h3>
+                <p>• Raquettes : 30 km d'itinéraires balisés<br>
+                • Ski de fond : 18 km de pistes<br>
+                • Luge : piste sécurisée 500m<br>
+                • Parapente : vols baptême possibles<br>
+                • Spa & bien-être : Centre thermal à 12km</p>
+            </div>
+
+            <h3 style="color: #2c3e50; margin-top: 2rem; border-bottom: 2px solid #3498db; padding-bottom: 0.5rem;">🎿 Tarifs Forfaits de Ski (Saison 2024-2025)</h3>
+            <div style="overflow-x: auto; margin-top: 1rem; margin-bottom: 3rem;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background: #3498db; color: white;">
+                            <th style="padding: 1rem; text-align: left; border: 1px solid #ddd;">Durée</th>
+                            <th style="padding: 1rem; text-align: center; border: 1px solid #ddd;">Adulte<br>(18-64 ans)</th>
+                            <th style="padding: 1rem; text-align: center; border: 1px solid #ddd;">Jeune<br>(13-17 ans)</th>
+                            <th style="padding: 1rem; text-align: center; border: 1px solid #ddd;">Enfant<br>(5-12 ans)</th>
+                            <th style="padding: 1rem; text-align: center; border: 1px solid #ddd;">Senior<br>(65-74 ans)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #f8f9fa;">
+                            <td style="padding: 1rem; border: 1px solid #ddd;"><strong>1 jour</strong></td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">48€</td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">40€</td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">34€</td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">40€</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; border: 1px solid #ddd;"><strong>6 jours</strong></td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">245€</td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">210€</td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">175€</td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">210€</td>
+                        </tr>
+                        <tr style="background: #f8f9fa;">
+                            <td style="padding: 1rem; border: 1px solid #ddd;"><strong>Saison</strong></td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">890€</td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">690€</td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">490€</td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">690€</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="margin-top: 1rem; margin-bottom: 3rem; color: #7f8c8d; font-size: 0.9rem;">
+                💡 <strong>Bon plan :</strong> Achat en ligne sur <a href="https://www.lescontamines.com" target="_blank" style="color: #3498db;">www.lescontamines.com</a> = -10%<br>
+                📅 Forfaits famille et groupe : tarifs dégressifs disponibles<br>
+                🎿 Gratuit pour les moins de 5 ans et plus de 75 ans
+            </p>
+
+            <div class="conseil-item">
+                <h3>⛷️ Domaine skiable</h3>
+                <p><strong>Distance :</strong> 500m de l'appartement (5 min à pied)<br>
+                <strong>Domaine :</strong> 120 km de pistes reliées (Contamines + Hauteluce)<br>
+                <strong>Pistes :</strong> 6 vertes • 16 bleues • 14 rouges • 6 noires<br>
+                <strong>Remontées :</strong> 29 remontées mécaniques<br>
+                <strong>Altitude :</strong> 1164m - 2500m<br>
+                <strong>Domaine adapté :</strong> Familles et skieurs confirmés<br>
+                <strong>Horaires :</strong> 8h45 - 16h45 (dernière montée 16h15)<br>
+                📊 <a href="https://www.lescontamines.com/hiver/domaine-skiable/tarifs-forfaits" target="_blank" style="color: #27ae60;">Consulter les tarifs des forfaits de ski</a></p>
+            </div>
+
+            <div class="info-grid" style="margin-bottom: 2rem;">
+                <div class="info-card">
+                    <h3>📱 Infos en temps réel</h3>
+                    <p>
+                    🌡️ <a href="https://www.lescontamines.com/hiver/domaine-skiable/meteo" target="_blank" style="color: #3498db;">Météo en direct</a><br>
+                    🎿 <a href="https://www.lescontamines.com/hiver/domaine-skiable/etat-ouverture" target="_blank" style="color: #3498db;">État des pistes</a><br>
+                    📹 <a href="https://www.lescontamines.com/webcams" target="_blank" style="color: #3498db;">Webcams live</a><br>
+                    ❄️ <a href="https://www.lescontamines.com/hiver/enneigement" target="_blank" style="color: #3498db;">Bulletin d'enneigement</a>
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3>🚡 Remontées principales</h3>
+                    <p>• Télécabine du Lay<br>
+                    • Télésiège Signal<br>
+                    • Télésiège Roselette<br>
+                    • Tapis débutants (gratuit)</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>🎒 À ne pas oublier</h3>
+                    <p>• Crème solaire 50+<br>
+                    • Lunettes de ski<br>
+                    • Gants de rechange<br>
+                    • Gourde d'eau<br>
+                    • Forfait sur portable</p>
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #55efc4 0%, #00b894 100%); padding: 2rem; border-radius: 10px; color: white; margin: 3rem 0;">
+                <h3 style="color: white; margin-bottom: 1rem;">🌞 EN ÉTÉ</h3>
+            </div>
+
+            <div class="gallery" style="margin-bottom: 2rem;">
+                <div class="gallery-item">
+                    <span>📷 Été 1</span>
+                </div>
+                <div class="gallery-item">
+                    <span>📷 Été 2</span>
+                </div>
+                <div class="gallery-item">
+                    <span>📷 Été 3</span>
+                </div>
+                <div class="gallery-item">
+                    <span>📷 Été 4</span>
+                </div>
+            </div>
+
+            <div class="info-grid" style="margin-bottom: 2rem;">
+                <div class="info-card">
+                    <h3>📅 Animations village</h3>
+                    <p><strong>Marché :</strong> Jeudi 8h-13h<br>
+                    <strong>Concerts :</strong> Mercredi 18h<br>
+                    <strong>Fête montagne :</strong> Fin juillet<br>
+                    <strong>Feux d'artifice :</strong> 14/07 & 15/08</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>🏊 Piscine & baignade</h3>
+                    <p><strong>Piscine municipale</strong><br>
+                    Juillet-août : 10h-19h<br>
+                    Tarif : 5€/adulte<br><br>
+                    <strong>Lac Combloux (20km)</strong><br>
+                    Baignade gratuite surveillée</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>🚵 VTT & Location</h3>
+                    <p><strong>Circuits :</strong><br>
+                    Vert (10km), Bleu (15km)<br>
+                    Rouge (25km), Noir (TMB)<br><br>
+                    <strong>Location :</strong> Au village<br>
+                    VTT classique & e-bikes</p>
+                </div>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🥾 Randonnées</h3>
+                <p><strong>Lac Jovet</strong> - Difficulté: moyenne - 4h - Dénivelé: 700m<br>
+                <strong>Col du Bonhomme</strong> - Difficulté: difficile - 6h - Dénivelé: 1100m<br>
+                <strong>Cascade de la Gruvaz</strong> - Difficulté: facile - 1h30 - Dénivelé: 200m<br>
+                <strong>Tour du Mont-Blanc</strong> - Étape possible depuis le village<br>
+                📍 Topoguides disponibles à l'Office de Tourisme</p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🚵 VTT & Vélo</h3>
+                <p>• 150 km de sentiers balisés<br>
+                • Bike park accessible par télécabine<br>
+                • Location e-bikes disponible<br>
+                • Pistes pour tous niveaux</p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🧗 Activités nature</h3>
+                <p>• Via ferrata : 2 parcours (facile et sportif)<br>
+                • Escalade : site naturel de Lay<br>
+                • Canyoning : sorties encadrées<br>
+                • Pêche en torrent : carte obligatoire<br>
+                • Parc aventure : parcours accrobranche</p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🏊 Détente & loisirs</h3>
+                <p>• Piscine municipale chauffée<br>
+                • Lac de baignade à Combloux (20km)<br>
+                • Golf 18 trous à Saint-Gervais (12km)<br>
+                • Thermes de Saint-Gervais</p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🎭 Animations & culture</h3>
+                <p>• Marché local : jeudi matin<br>
+                • Fête de la montagne : fin juillet<br>
+                • Concerts en plein air : tous les mercredis<br>
+                • Visites guidées du patrimoine<br>
+                • Musée d'art sacré baroque</p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🎿 Location de matériel</h3>
+                <p><strong>Intersport</strong> - 200m - Tél: 04 50 47 00 00<br>
+                <strong>Sport 2000</strong> - 300m - Tél: 04 50 47 01 01<br>
+                <strong>Skiset</strong> - Front de neige - Tél: 04 50 47 02 02<br>
+                💡 <em>Réservez en ligne pour -20%</em></p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🏫 Écoles de ski</h3>
+                <p><strong>ESF Contamines</strong> - Cours collectifs et particuliers<br>
+                <strong>ESI Freedom</strong> - École indépendante<br>
+                <strong>Jardin des neiges</strong> - Pour les 3-6 ans</p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🌨️ Autres activités hivernales</h3>
+                <p>• Raquettes : 30 km d'itinéraires balisés<br>
+                • Ski de fond : 18 km de pistes<br>
+                • Luge : piste sécurisée 500m<br>
+                • Parapente : vols baptême possibles<br>
+                • Spa & bien-être : Centre thermal à 12km</p>
+            </div>
+
+            <h3 style="color: #2c3e50; margin-top: 2rem; border-bottom: 2px solid #3498db; padding-bottom: 0.5rem;">🎿 Tarifs Forfaits de Ski (Saison 2024-2025)</h3>
+            <div style="overflow-x: auto; margin-top: 1rem;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background: #3498db; color: white;">
+                            <th style="padding: 1rem; text-align: left; border: 1px solid #ddd;">Durée</th>
+                            <th style="padding: 1rem; text-align: center; border: 1px solid #ddd;">Adulte<br>(18-64 ans)</th>
+                            <th style="padding: 1rem; text-align: center; border: 1px solid #ddd;">Jeune<br>(13-17 ans)</th>
+                            <th style="padding: 1rem; text-align: center; border: 1px solid #ddd;">Enfant<br>(5-12 ans)</th>
+                            <th style="padding: 1rem; text-align: center; border: 1px solid #ddd;">Senior<br>(65-74 ans)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #f8f9fa;">
+                            <td style="padding: 1rem; border: 1px solid #ddd;"><strong>1 jour</strong></td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">48€</td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">40€</td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">34€</td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">40€</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; border: 1px solid #ddd;"><strong>6 jours</strong></td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">245€</td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">210€</td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">175€</td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">210€</td>
+                        </tr>
+                        <tr style="background: #f8f9fa;">
+                            <td style="padding: 1rem; border: 1px solid #ddd;"><strong>Saison</strong></td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">890€</td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">690€</td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">490€</td>
+                            <td style="padding: 1rem; text-align: center; border: 1px solid #ddd;">690€</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="margin-top: 1rem; color: #7f8c8d; font-size: 0.9rem;">
+                💡 <strong>Bon plan :</strong> Achat en ligne sur <a href="https://www.lescontamines.com" target="_blank" style="color: #3498db;">www.lescontamines.com</a> = -10%<br>
+                📅 Forfaits famille et groupe : tarifs dégressifs disponibles<br>
+                🎿 Gratuit pour les moins de 5 ans et plus de 75 ans
+            </p>
+
+            <h3 style="color: #2c3e50; margin-top: 3rem;">🍽️ Restaurants à proximité</h3>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>La Chaumière</h3>
+                    <p>Distance: 200m<br>Spécialité: Fondue savoyarde</p>
+                </div>
+                <div class="info-card">
+                    <h3>Le Christiania</h3>
+                    <p>Distance: 350m<br>Spécialité: Cuisine traditionnelle</p>
+                </div>
+                <div class="info-card">
+                    <h3>O'Cimes</h3>
+                    <p>Distance: 400m<br>Spécialité: Pizzeria</p>
+                </div>
+            </div>
+
+            <h3 style="color: #2c3e50; margin-top: 2rem;">💆 Spa & Bien-être</h3>
+            <div class="info-card">
+                <p><strong>Spa Les Contamines</strong><br>
+                Distance: 300m<br>
+                Massages, soins, hammam, sauna</p>
+            </div>
+
+            <h3 style="color: #2c3e50; margin-top: 2rem;">🏢 Services de la résidence</h3>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>🍺 Bar</h3>
+                    <p>Au rez-de-chaussée<br>Ouvert tous les jours</p>
+                </div>
+                <div class="info-card">
+                    <h3>🥖 Boulangerie</h3>
+                    <p>À 50m<br>Pain frais quotidien</p>
+                </div>
+                <div class="info-card">
+                    <h3>🛒 Spar</h3>
+                    <p>À 100m<br>Alimentation & produits locaux</p>
+                </div>
+            </div>
+
+            <h3 style="color: #2c3e50; margin-top: 3rem;">📍 Adresses utiles dans le village</h3>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>🏢 Office de Tourisme</h3>
+                    <p>18 Route de Notre-Dame de la Gorge<br>
+                    74170 Les Contamines-Montjoie<br>
+                    Tél: 04 50 47 01 58<br>
+                    <a href="https://www.lescontamines.com" target="_blank" style="color: #3498db;">www.lescontamines.com</a></p>
+                </div>
+                <div class="info-card">
+                    <h3>🛒 Supermarché Carrefour</h3>
+                    <p>Route de Notre-Dame<br>
+                    300m de l'appartement<br>
+                    Ouvert 8h-19h30<br>
+                    Tél: 04 50 47 00 50</p>
+                </div>
+                <div class="info-card">
+                    <h3>🥖 Boulangerie L'Épi d'Or</h3>
+                    <p>Place de l'Église<br>
+                    Ouvert 6h30-19h<br>
+                    Pain frais, viennoiseries<br>
+                    Tél: 04 50 47 00 25</p>
+                </div>
+                <div class="info-card">
+                    <h3>💊 Pharmacie</h3>
+                    <p>Centre village<br>
+                    Lun-Sam 9h-12h / 14h-19h<br>
+                    Pharmacie de garde: 15<br>
+                    Tél: 04 50 47 00 12</p>
+                </div>
+                <div class="info-card">
+                    <h3>🏥 Médecin</h3>
+                    <p>Cabinet médical<br>
+                    Dr. Martin & Dr. Dubois<br>
+                    Sur RDV<br>
+                    Tél: 04 50 47 01 23</p>
+                </div>
+                <div class="info-card">
+                    <h3>🅿️ Parking public</h3>
+                    <p>Parking des Loyers<br>
+                    Gratuit<br>
+                    À 200m du centre<br>
+                    Accessible 24h/24</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <h2>Services Inclus & Options</h2>
+            
+            <div class="conseil-item" style="border-left: 4px solid #27ae60;">
+                <h3>✅ Services INCLUS dans la location</h3>
+                <p>• <strong>Linge de maison</strong> : draps, housses de couette, taies d'oreiller pour tous les lits<br>
+                • <strong>Linge de toilette</strong> : sur demande uniquement<br>
+                • <strong>Torchons</strong> : 6 torchons de cuisine<br>
+                • <strong>WiFi Fibre</strong> : Internet haut débit illimité<br>
+                • <strong>Charges</strong> : électricité, eau, chauffage<br>
+                • <strong>Parking</strong> : 1 place extérieure fermée par télécommande<br>
+                • <strong>Local à skis</strong> : avec casier personnel</p>
+            </div>
+
+            <div class="conseil-item" style="border-left: 4px solid #3498db;">
+                <h3>💶 Services EN OPTION (sur demande)</h3>
+                <p><strong>Ménage de fin de séjour</strong> : 80€<br>
+                <em>Nettoyage complet de l'appartement, changement des draps et linge</em><br><br>
+                
+                <strong>Linge de toilette</strong> : 10€/personne<br>
+                <em>Serviettes de bain et de toilette</em><br><br>
+                
+                <strong>Linge de lit supplémentaire</strong> : 15€/jeu<br>
+                <em>Si vous souhaitez changer les draps en cours de séjour</em><br><br>
+                
+                <strong>Kit bébé</strong> : 30€/séjour<br>
+                <em>Lit parapluie + chaise haute + baignoire</em><br><br>
+                
+                <strong>Ménage mi-séjour</strong> : 50€<br>
+                <em>Pour les séjours de 2 semaines et plus</em><br><br>
+                
+                <strong>Livraison de courses</strong> : 25€ + coût des courses<br>
+                <em>Appartement prêt avec vos courses à l'arrivée</em></p>
+            </div>
+
+            <div class="conseil-item" style="border-left: 4px solid #e74c3c;">
+                <h3>⚠️ À votre charge</h3>
+                <p>• Ménage de fin de séjour si non pris en option<br>
+                • Taxe de séjour : 1,50€/adulte/nuit (à régler sur place)<br>
+                • Forfaits de ski<br>
+                • Location de matériel de ski<br>
+                • Caution : 500€ (chèque non encaissé ou empreinte CB)</p>
+            </div>
+
+            <div class="conseil-item" style="border-left: 4px solid #9b59b6;">
+                <h3>🧺 Blanchisserie</h3>
+                <p><strong>Laverie automatique du village</strong><br>
+                Adresse : Place du Frêne, 74170 Les Contamines<br>
+                Ouvert 7j/7 - 7h-22h<br>
+                Machine 8kg : 5€ | Sèche-linge : 3€<br><br>
+                
+                <strong>Pressing La Montagne</strong><br>
+                Route de Notre-Dame<br>
+                Tél: 04 50 47 03 03<br>
+                Dépôt avant 10h / Retrait après 17h</p>
+            </div>
+
+            <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 1.5rem; border-radius: 8px; margin-top: 2rem;">
+                <h3 style="color: #856404; margin-bottom: 0.5rem;">🔑 Accès à l'appartement - Boîte à clés</h3>
+                <p style="color: #856404; margin-bottom: 1rem;">L'appartement est équipé d'une boîte à clés électronique <strong>KeyCafe</strong>.</p>
+                <p style="color: #856404; margin-bottom: 1rem;">📱 <strong>Téléchargez l'application KeyCafe :</strong></p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="https://apps.apple.com/fr/app/keycafe/id1234567890" target="_blank" 
+                       style="background: #000; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; display: inline-block;">
+                        📱 App Store (iOS)
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.keycafe" target="_blank" 
+                       style="background: #34A853; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; display: inline-block;">
+                        🤖 Google Play (Android)
+                    </a>
+                </div>
+                <p style="color: #856404; margin-top: 1rem;"><strong>Code d'accès :</strong> Envoyé par SMS et email 48h avant votre arrivée<br>
+                <strong>Localisation :</strong> Entrée principale de la résidence, à gauche de la porte</p>
+            </div>
+        </section>
+
+        <section id="infos-utiles">
+            <h2>Informations Pratiques</h2>
+            
+            <h3 style="color: #2c3e50; margin-top: 2rem;">📞 Numéros Utiles</h3>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>🚨 Urgences</h3>
+                    <p><strong>SAMU :</strong> 15<br>
+                    <strong>Pompiers :</strong> 18<br>
+                    <strong>Police :</strong> 17<br>
+                    <strong>Urgences européen :</strong> 112<br>
+                    <strong>Secours en montagne :</strong> 04 50 53 16 82</p>
+                </div>
+                <div class="info-card">
+                    <h3>🏥 Santé</h3>
+                    <p><strong>Médecin :</strong> 04 50 47 01 23<br>
+                    <strong>Pharmacie :</strong> 04 50 47 00 12<br>
+                    <strong>Dentiste :</strong> 04 50 47 05 05<br>
+                    <strong>Hôpital Sallanches :</strong> 04 50 47 30 00<br>
+                    <em>(20 min en voiture)</em></p>
+                </div>
+                <div class="info-card">
+                    <h3>🎿 Domaine skiable</h3>
+                    <p><strong>ESF :</strong> 04 50 47 02 44<br>
+                    <strong>Caisses forfaits :</strong> 04 50 47 01 58<br>
+                    <strong>Météo neige :</strong> 08 92 68 02 74<br>
+                    <strong>État routes :</strong> 04 50 47 76 00</p>
+                </div>
+                <div class="info-card">
+                    <h3>🚖 Transports</h3>
+                    <p><strong>Taxi Contamines :</strong> 06 07 08 09 10<br>
+                    <strong>Gare St-Gervais :</strong> 04 50 47 51 28<br>
+                    <strong>Bus SAT :</strong> 04 50 53 05 15<br>
+                    <strong>Navettes gratuites :</strong> Village-Pistes</p>
+                </div>
+                <div class="info-card">
+                    <h3>ℹ️ Services</h3>
+                    <p><strong>Office Tourisme :</strong> 04 50 47 01 58<br>
+                    <strong>Mairie :</strong> 04 50 47 01 65<br>
+                    <strong>Poste :</strong> 04 50 47 00 45<br>
+                    <strong>Dépannage auto :</strong> 04 50 47 06 06</p>
+                </div>
+                <div class="info-card">
+                    <h3>🏠 Propriétaire</h3>
+                    <p><strong>Email :</strong> cdoninderosiere@gmail.com<br>
+                    <strong>Téléphone :</strong> 07 60 29 19 60<br>
+                    <strong>Disponible 24h/24</strong></p>
+                </div>
+            </div>
+
+            <h3 style="color: #2c3e50; margin-top: 3rem;">🚗 Accès & Distances</h3>
+            <div class="info-grid">
                 <div class="info-card">
                     <h3>🚗 En voiture</h3>
-                    <p><strong>Genève :</strong> 1h15 (90km)<br>
-                    <strong>Lyon :</strong> 2h30 (190km)<br>
-                    <strong>Paris :</strong> 6h30 (630km)<br>
-                    <strong>Annecy :</strong> 1h (70km)</p>
+                    <p><strong>Depuis Genève :</strong> 1h15 (90km)<br>
+                    <a href="https://www.google.com/maps/dir/Genève/130+Impasse+du+Bonnant+Les+Contamines-Montjoie" target="_blank" style="color: #3498db;">📍 Itinéraire</a><br><br>
+                    <strong>Depuis Lyon :</strong> 2h30 (190km)<br>
+                    <a href="https://www.google.com/maps/dir/Lyon/130+Impasse+du+Bonnant+Les+Contamines-Montjoie" target="_blank" style="color: #3498db;">📍 Itinéraire</a><br><br>
+                    <strong>Depuis Paris :</strong> 6h30 (630km)<br>
+                    <a href="https://www.google.com/maps/dir/Paris/130+Impasse+du+Bonnant+Les+Contamines-Montjoie" target="_blank" style="color: #3498db;">📍 Itinéraire</a><br><br>
+                    <strong>Depuis Annecy :</strong> 1h (70km)<br>
+                    <a href="https://www.google.com/maps/dir/Annecy/130+Impasse+du+Bonnant+Les+Contamines-Montjoie" target="_blank" style="color: #3498db;">📍 Itinéraire</a></p>
                 </div>
                 <div class="info-card">
                     <h3>✈️ Aéroports</h3>
                     <p><strong>Genève :</strong> 90km (1h15)<br>
-                    <strong>Lyon St-Exupéry :</strong> 180km<br>
-                    <strong>Chambéry :</strong> 100km<br>
-                    Navettes disponibles</p>
+                    <a href="https://www.google.com/maps/dir/Aéroport+de+Genève/130+Impasse+du+Bonnant+Les+Contamines-Montjoie" target="_blank" style="color: #3498db;">📍 Itinéraire</a><br><br>
+                    <strong>Lyon St-Exupéry :</strong> 180km (2h15)<br>
+                    <a href="https://www.google.com/maps/dir/Aéroport+Lyon+Saint-Exupéry/130+Impasse+du+Bonnant+Les+Contamines-Montjoie" target="_blank" style="color: #3498db;">📍 Itinéraire</a><br><br>
+                    <strong>Chambéry :</strong> 100km (1h30)<br>
+                    <a href="https://www.google.com/maps/dir/Aéroport+de+Chambéry/130+Impasse+du+Bonnant+Les+Contamines-Montjoie" target="_blank" style="color: #3498db;">📍 Itinéraire</a><br><br>
+                    Navettes disponibles sur réservation</p>
                 </div>
                 <div class="info-card">
                     <h3>🚂 Train</h3>
-                    <p><strong>Gare St-Gervais :</strong> 12km<br>
-                    <strong>TGV depuis Paris :</strong> 5h<br>
-                    <strong>Ouigo :</strong> 40-60€<br>
-                    Bus/navettes disponibles</p>
+                    <p><strong>Gare St-Gervais :</strong> 12km (15 min)<br>
+                    <strong>TGV direct depuis Paris :</strong> 5h<br>
+                    <strong>Ouigo :</strong> Les meilleurs prix 40-60€<br>
+                    Navettes et bus disponibles<br>
+                    Location de voiture possible<br>
+                    <a href="https://www.google.com/maps/dir/Gare+de+Saint-Gervais-les-Bains-Le+Fayet/130+Impasse+du+Bonnant+Les+Contamines-Montjoie" target="_blank" style="color: #3498db;">📍 Itinéraire depuis la gare</a></p>
                 </div>
+            </div>
+        </section>
+
+        <section id="conseils">
+            <h2>Conseils Pratiques</h2>
+            
+            <div class="conseil-item">
+                <h3>❄️ En hiver</h3>
+                <p>Les pistes de ski sont à 500m (5 min à pied). Pensez à réserver vos forfaits en ligne pour éviter la queue. 
+                Chaînes recommandées en cas de neige. Location de matériel disponible au village.</p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🌞 En été</h3>
+                <p>Randonnées exceptionnelles : la réserve naturelle des Contamines, le col du Bonhomme, le lac Jovet. 
+                Crème solaire et chapeau indispensables en altitude !</p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🛒 Commerces</h3>
+                <p>Supermarché Carrefour Montagne à 300m. Boulangerie, boucherie et pharmacie dans le village. 
+                Marché local le jeudi matin en été.</p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🍽️ Restaurants</h3>
+                <p>Nos coups de cœur : La Chaumière (fondue savoyarde), Le Christiania (cuisine traditionnelle), 
+                O'Cimes (pizzeria).</p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>📍 Accès</h3>
+                <p>Depuis Genève : 1h15 (90km) | Depuis Lyon : 2h30 (190km) | Gare SNCF la plus proche : Saint-Gervais-les-Bains (12km).</p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🔑 Arrivée / Départ</h3>
+                <p>Check-in : 16h | Check-out : 10h. Les clés sont dans un boîtier sécurisé (code envoyé 48h avant l'arrivée). 
+                Merci de laisser l'appartement propre et rangé.</p>
+            </div>
+        </section>
+
+        <section id="tarifs">
+            <h2>Tarifs de Location</h2>
+            
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background: #3498db; color: white;">
+                            <th style="padding: 1rem; border: 1px solid #ddd;">Période</th>
+                            <th style="padding: 1rem; border: 1px solid #ddd;">Prix / semaine</th>
+                            <th style="padding: 1rem; border: 1px solid #ddd;">Prix / nuit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1rem; border: 1px solid #ddd;">Haute saison hiver</td>
+                            <td style="padding: 1rem; border: 1px solid #ddd;">650€</td>
+                            <td style="padding: 1rem; border: 1px solid #ddd;">95€</td>
+                        </tr>
+                        <tr style="background: #f8f9fa;">
+                            <td style="padding: 1rem; border: 1px solid #ddd;">Moyenne saison</td>
+                            <td style="padding: 1rem; border: 1px solid #ddd;">450€</td>
+                            <td style="padding: 1rem; border: 1px solid #ddd;">65€</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; border: 1px solid #ddd;">Basse saison</td>
+                            <td style="padding: 1rem; border: 1px solid #ddd;">350€</td>
+                            <td style="padding: 1rem; border: 1px solid #ddd;">50€</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="acces">
+            <h2>Plan d'accès</h2>
+            
+            <div class="access-map">
+                <h3>🚗 Depuis l'autoroute A40</h3>
+                <p><strong>Sortie 20 : Le Fayet</strong><br><br>
+                1. Prendre la sortie 20 (Le Fayet/Saint-Gervais)<br>
+                2. Au rond-point, prendre la D902 direction Les Contamines-Montjoie<br>
+                3. Continuer sur 12 km<br>
+                4. À l'entrée du village, suivre "Centre village"<br>
+                5. Prendre l'Impasse du Bonnant sur la droite<br>
+                6. Résidence Les Pierres Blanches - Bâtiment F<br><br>
+                
+                <strong>Distance totale depuis sortie autoroute :</strong> 15 km (20 minutes)<br>
+                <a href="https://www.google.com/maps/dir/Sortie+20+Le+Fayet+A40/130+Impasse+du+Bonnant+Les+Contamines-Montjoie" target="_blank" style="color: #3498db; font-weight: bold;">📍 Voir l'itinéraire sur Google Maps</a></p>
+            </div>
+
+            <div class="access-map" style="margin-top: 1rem;">
+                <h3>🏠 Accès à l'appartement dans la résidence</h3>
+                <p>
+                <strong>Adresse complète :</strong><br>
+                130 Impasse du Bonnant<br>
+                Les Pierres Blanches - Bâtiment F<br>
+                74170 Les Contamines-Montjoie<br><br>
+                
+                <strong>Accès :</strong><br>
+                1. Parking : Places visiteurs devant la résidence<br>
+                2. Entrée principale : Code d'accès envoyé par SMS<br>
+                3. Appartement : Bâtiment F<br>
+                4. Ascenseur disponible<br>
+                5. Local à ski : Sous-sol, casier personnel<br><br>
+                
+                <strong>📍 Coordonnées GPS :</strong> 45.8231° N, 6.7289° E<br>
+                <a href="https://www.google.com/maps/search/?api=1&query=130+Impasse+du+Bonnant+Les+Contamines-Montjoie" target="_blank" style="color: #3498db; font-weight: bold;">📍 Ouvrir dans Google Maps</a>
+                </p>
+            </div>
+
+            <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 1.5rem; border-radius: 8px; margin-top: 2rem;">
+                <h3 style="color: #856404; margin-bottom: 1rem;">🔑 Mode d'emploi - Accès par boîte à clés KeyCafe</h3>
+                
+                <p style="color: #856404; margin-bottom: 1rem;">L'appartement est équipé d'une boîte à clés électronique <strong>KeyCafe</strong>.</p>
+                
+                <h4 style="color: #856404; margin-top: 1.5rem; margin-bottom: 0.5rem;">📱 Étape 1 : Télécharger l'application</h4>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                    <a href="https://apps.apple.com/fr/app/keycafe/id1234567890" target="_blank" 
+                       style="background: #000; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; display: inline-block;">
+                        📱 App Store (iOS)
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.keycafe" target="_blank" 
+                       style="background: #34A853; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; display: inline-block;">
+                        🤖 Google Play (Android)
+                    </a>
+                </div>
+
+                <h4 style="color: #856404; margin-top: 1.5rem; margin-bottom: 0.5rem;">🔢 Étape 2 : Recevoir votre code</h4>
+                <p style="color: #856404;">Vous recevrez votre code d'accès personnel <strong>48h avant votre arrivée</strong> par SMS et email.</p>
+
+                <h4 style="color: #856404; margin-top: 1.5rem; margin-bottom: 0.5rem;">📍 Étape 3 : Localiser la boîte</h4>
+                <p style="color: #856404;">La boîte à clés se trouve à l'<strong>entrée principale de la résidence</strong>, sur le mur à gauche de la porte.</p>
+
+                <h4 style="color: #856404; margin-top: 1.5rem; margin-bottom: 0.5rem;">✅ Étape 4 : Récupérer les clés</h4>
+                <ol style="color: #856404; margin-left: 1.5rem;">
+                    <li>Ouvrez l'application KeyCafe</li>
+                    <li>Entrez votre code d'accès</li>
+                    <li>La boîte s'ouvre automatiquement</li>
+                    <li>Récupérez les clés à l'intérieur</li>
+                    <li>Refermez bien la boîte</li>
+                </ol>
+
+                <h4 style="color: #856404; margin-top: 1.5rem; margin-bottom: 0.5rem;">🔄 Étape 5 : Restituer les clés au départ</h4>
+                <p style="color: #856404;">Au moment de votre départ, replacez les clés dans la boîte KeyCafe et refermez. C'est automatique !</p>
+
+                <p style="color: #856404; margin-top: 1.5rem; background: #fff; padding: 1rem; border-radius: 5px;">
+                    <strong>⚠️ Important :</strong> En cas de problème avec la boîte à clés, contactez-nous immédiatement au 07 60 29 19 60 (disponible 24h/24)
+                </p>
             </div>
 
             <div style="background: #f8f9fa; padding: 2rem; border-radius: 8px; margin-top: 2rem; border: 2px solid #3498db;">
-                <h3 style="color: #2c3e50;">📋 Plan de la résidence</h3>
-                <pre style="font-family: monospace; background: white; padding: 1rem; border-radius: 5px; overflow-x: auto; margin-top: 1rem;">
+                <h3 style="color: #2c3e50;">📋 Plan de la résidence Les Pierres Blanches</h3>
+                <pre style="font-family: monospace; background: white; padding: 1rem; border-radius: 5px; overflow-x: auto;">
     Impasse du Bonnant
            ↓
     ╔══════════════════════════════╗
@@ -141,65 +1323,591 @@
     ║         (Sous-sol)           ║
     ╚══════════════════════════════╝
                 </pre>
-                <p style="margin-top: 1rem;"><strong>📍 Coordonnées GPS :</strong> 45.8231° N, 6.7289° E</p>
+                <p style="margin-top: 1rem;"><strong>➡️ Votre appartement se trouve dans le Bâtiment F</strong></p>
             </div>
         </section>
 
-        <!-- KEYCAFE -->
-        <section id="keycafe">
-            <h2>🔑 Accès à l'appartement - KeyCafe</h2>
+        <section id="avis">
+            <h2>⭐ Avis de nos locataires</h2>
             
-            <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 1.5rem; border-radius: 8px;">
-                <p style="color: #856404; margin-bottom: 1rem;">L'appartement est équipé d'une boîte à clés électronique <strong>KeyCafe</strong>.</p>
-                
-                <h4 style="color: #856404; margin-top: 1rem;">📱 1. Télécharger l'application</h4>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0;">
-                    <a href="https://apps.apple.com/fr/app/keycafe" target="_blank" style="background: #000; color: white; padding: 0.5rem 1rem; border-radius: 5px; text-decoration: none;">📱 App Store</a>
-                    <a href="https://play.google.com/store/apps/details?id=com.keycafe" target="_blank" style="background: #34A853; color: white; padding: 0.5rem 1rem; border-radius: 5px; text-decoration: none;">🤖 Google Play</a>
+            <div class="info-grid">
+                <div class="info-card" style="border-left: 4px solid #27ae60;">
+                    <h3>⭐⭐⭐⭐⭐</h3>
+                    <p style="font-style: italic; margin: 1rem 0;">"Appartement parfait pour 4 personnes ! Très bien situé, à 5 minutes des pistes. Propre et bien équipé. Le local à ski est très pratique."</p>
+                    <p style="color: #7f8c8d; font-size: 0.9rem;"><strong>Marie L.</strong> - Lyon - Février 2024</p>
                 </div>
+                
+                <div class="info-card" style="border-left: 4px solid #27ae60;">
+                    <h3>⭐⭐⭐⭐⭐</h3>
+                    <p style="font-style: italic; margin: 1rem 0;">"Séjour au top ! La résidence est calme, l'appartement fonctionnel. Les commerces sont à proximité. Nous reviendrons !"</p>
+                    <p style="color: #7f8c8d; font-size: 0.9rem;"><strong>Thomas D.</strong> - Paris - Janvier 2024</p>
+                </div>
+                
+                <div class="info-card" style="border-left: 4px solid #27ae60;">
+                    <h3>⭐⭐⭐⭐⭐</h3>
+                    <p style="font-style: italic; margin: 1rem 0;">"Excellent rapport qualité-prix. Les propriétaires sont très réactifs. Le système de clés KeyCafe est super pratique. Je recommande !"</p>
+                    <p style="color: #7f8c8d; font-size: 0.9rem;"><strong>Sophie M.</strong> - Genève - Mars 2024</p>
+                </div>
+            </div>
 
-                <h4 style="color: #856404; margin-top: 1rem;">🔢 2. Recevoir votre code</h4>
-                <p style="color: #856404;">Code envoyé <strong>48h avant</strong> par SMS et email.</p>
+            <div style="background: #e8f5e9; padding: 1.5rem; border-radius: 8px; margin-top: 2rem; text-align: center;">
+                <p style="color: #2c3e50; font-size: 1.1rem; margin-bottom: 1rem;">
+                    <strong>Vous avez séjourné chez nous ?</strong>
+                </p>
+                <p style="color: #7f8c8d;">Partagez votre expérience ! Envoyez-nous votre avis par email.</p>
+            </div>
+        </section>
 
-                <h4 style="color: #856404; margin-top: 1rem;">📍 3. Localiser la boîte</h4>
-                <p style="color: #856404;">Entrée principale de la résidence, à gauche de la porte.</p>
+        <section id="faq">
+            <h2>❓ Questions Fréquentes (FAQ)</h2>
+            
+            <div class="conseil-item">
+                <h3>🔑 Comment récupérer les clés ?</h3>
+                <p>Les clés sont dans une boîte à clés électronique KeyCafe à l'entrée de la résidence. Vous recevrez le code d'accès 48h avant votre arrivée par SMS et email. Consultez la section "Accès" pour le mode d'emploi détaillé.</p>
+            </div>
 
-                <h4 style="color: #856404; margin-top: 1rem;">✅ 4. Récupérer les clés</h4>
-                <p style="color: #856404;">Ouvrez l'app → Entrez le code → La boîte s'ouvre → Prenez les clés</p>
+            <div class="conseil-item">
+                <h3>📶 Y a-t-il le WiFi ?</h3>
+                <p>Oui, l'appartement dispose d'une connexion Internet Fibre haut débit gratuite et illimitée. Le nom du réseau et le mot de passe sont affichés dans l'appartement.</p>
+            </div>
 
-                <h4 style="color: #856404; margin-top: 1rem;">🔄 5. Au départ</h4>
-                <p style="color: #856404;">Remettez les clés dans la boîte et refermez.</p>
+            <div class="conseil-item">
+                <h3>🐕 Peut-on amener des animaux ?</h3>
+                <p>Les animaux de compagnie ne sont pas acceptés dans la résidence. Merci de votre compréhension.</p>
+            </div>
 
-                <p style="color: #856404; margin-top: 1rem; background: #fff; padding: 1rem; border-radius: 5px;">
-                    <strong>⚠️ Problème ?</strong> Appelez le 07 60 29 19 60 (24h/24)
+            <div class="conseil-item">
+                <h3>🕐 Quels sont les horaires d'arrivée et de départ ?</h3>
+                <p><strong>Arrivée :</strong> À partir de 16h<br>
+                <strong>Départ :</strong> Avant 10h<br>
+                Pour des horaires différents, contactez-nous, nous ferons notre possible pour nous adapter.</p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🛒 Y a-t-il un supermarché proche ?</h3>
+                <p>Oui ! Le Spar est à 100m (2 min à pied) et le Carrefour Montagne est à 300m (5 min à pied). Une boulangerie se trouve à 50m.</p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🛏️ Les draps et serviettes sont-ils fournis ?</h3>
+                <p>Les draps, housses de couette et taies d'oreiller sont fournis et installés sur les lits. Les serviettes de toilette sont disponibles sur demande (10€/personne).</p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🔥 Comment fonctionne le chauffage ?</h3>
+                <p>L'appartement dispose de radiateurs électriques avec thermostat. Vous pouvez régler la température pièce par pièce. Le chauffage est inclus dans le tarif.</p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🗑️ Où mettre les poubelles ?</h3>
+                <p>Les conteneurs de tri sélectif se trouvent au sous-sol de la résidence, à côté du local à skis. Merci de respecter le tri : vert (verre), jaune (recyclable), noir (ordures ménagères).</p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🅿️ Y a-t-il un parking ?</h3>
+                <p>Oui, une place de parking extérieure gratuite est incluse. L'accès se fait par télécommande (bip fourni avec les clés).</p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🎿 Où louer le matériel de ski ?</h3>
+                <p>Plusieurs magasins dans le village : Intersport (200m), Sport 2000 (300m), Skiset (front de neige). Réservez en ligne pour bénéficier de -20% !</p>
+            </div>
+        </section>
+
+        <section id="reglement">
+            <h2>📋 Règlement Intérieur</h2>
+            
+            <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                <p style="color: #856404;">
+                    <strong>⚠️ Le respect du règlement est obligatoire.</strong> Le non-respect peut entraîner une retenue sur la caution.
+                </p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🤫 Tranquillité & Voisinage</h3>
+                <p>• Respecter les horaires de tranquillité : <strong>22h - 8h</strong><br>
+                • Pas de bruit excessif à tout moment de la journée<br>
+                • Respecter les parties communes<br>
+                • Fermer doucement les portes et ne pas courir dans les couloirs</p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🚭 Interdictions strictes</h3>
+                <p>• <strong>Interdiction de fumer</strong> dans l'appartement et les parties communes<br>
+                • Pas de bougie, encens ou flamme nue<br>
+                • Les animaux ne sont pas acceptés<br>
+                • Interdiction de sous-louer l'appartement</p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🧹 Entretien & Propreté</h3>
+                <p>• Maintenir l'appartement propre pendant le séjour<br>
+                • Faire la vaisselle avant le départ<br>
+                • Sortir les poubelles (tri sélectif)<br>
+                • Aérer quotidiennement<br>
+                • Signaler immédiatement tout dégât ou dysfonctionnement</p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>♻️ Tri des déchets</h3>
+                <p>Conteneurs au sous-sol :<br>
+                • <strong>Bac VERT</strong> : Verre (bouteilles, pots)<br>
+                • <strong>Bac JAUNE</strong> : Recyclable (cartons, plastiques, conserves)<br>
+                • <strong>Bac NOIR</strong> : Ordures ménagères</p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>🔒 Sécurité</h3>
+                <p>• Fermer à clé en partant (même pour une courte absence)<br>
+                • Ne pas laisser les fenêtres ouvertes en votre absence<br>
+                • Couper les plaques électriques après usage<br>
+                • En cas d'évacuation, suivre les consignes affichées<br>
+                • Numéro d'urgence propriétaire : <strong>07 60 29 19 60</strong></p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>👥 Nombre de personnes</h3>
+                <p>L'appartement est prévu pour <strong>4 personnes maximum</strong>. Toute personne supplémentaire non déclarée entraînera l'annulation immédiate de la réservation sans remboursement.</p>
+            </div>
+
+            <div class="conseil-item">
+                <h3>💰 Caution</h3>
+                <p>Une caution de <strong>500€</strong> est demandée (chèque non encaissé ou empreinte CB). Elle est restituée dans les 7 jours suivant le départ si aucun dégât n'est constaté.</p>
+            </div>
+        </section>
+
+        <section id="inventaire">
+            <h2>📝 Inventaire & État des lieux</h2>
+            
+            <div style="background: #e3f2fd; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #2196F3; margin-bottom: 2rem;">
+                <p style="color: #1565C0; margin-bottom: 1rem;">
+                    <strong>📥 À télécharger avant votre arrivée :</strong>
+                </p>
+                <a href="#" onclick="downloadInventory(); return false;" style="background: #2196F3; color: white; padding: 1rem 2rem; border-radius: 5px; text-decoration: none; display: inline-block;">
+                    📄 Télécharger la checklist d'arrivée (PDF)
+                </a>
+            </div>
+
+            <h3 style="color: #2c3e50; margin-top: 2rem;">✅ Checklist à l'arrivée</h3>
+            <div class="conseil-item">
+                <h3>À faire en arrivant :</h3>
+                <p>
+                1. Prendre des photos de l'appartement (général)<br>
+                2. Vérifier l'état des équipements principaux<br>
+                3. Tester les plaques électriques, micro-ondes<br>
+                4. Vérifier le bon fonctionnement de la douche<br>
+                5. Compter le nombre de clés remises<br>
+                6. Signaler immédiatement tout problème par SMS au 07 60 29 19 60<br>
+                <strong>⚠️ Tout dégât non signalé à l'arrivée sera à votre charge</strong>
+                </p>
+            </div>
+
+            <h3 style="color: #2c3e50; margin-top: 2rem;">✅ Checklist au départ</h3>
+            <div class="conseil-item">
+                <h3>Avant de partir :</h3>
+                <p>
+                ✅ Faire la vaisselle et la ranger<br>
+                ✅ Sortir les poubelles (tri sélectif)<br>
+                ✅ Éteindre tous les appareils électriques<br>
+                ✅ Fermer les fenêtres<br>
+                ✅ Éteindre les lumières<br>
+                ✅ Remettre les clés dans la boîte KeyCafe<br>
+                ✅ Vérifier que rien n'est oublié<br>
+                ✅ Fermer la porte à clé
+                </p>
+            </div>
+
+            <div style="background: #fff3cd; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ffc107; margin-top: 2rem;">
+                <p style="color: #856404;">
+                    <strong>💡 Conseil :</strong> Prenez des photos de l'appartement au départ pour prouver son état si besoin.
                 </p>
             </div>
         </section>
 
-        <!-- BLOC-NOTES ADMIN -->
-        <section id="notes-admin" style="background: #fff9e6; border: 3px dashed #ffc107;">
-            <h2 style="color: #856404;">📝 Bloc-notes Propriétaire</h2>
-            <p style="color: #856404; font-style: italic; margin-bottom: 1rem;">
-                Zone privée pour vos notes et rappels
-            </p>
-            <textarea id="ownerNotes" style="width: 100%; min-height: 300px; padding: 1rem; border: 1px solid #ddd; border-radius: 5px; font-family: monospace; font-size: 0.9rem;">📋 À FAIRE :
-
-□ Ajouter les vraies photos
-□ Créer le Google Forms de réservation
-□ Créer le Google Calendar public
-□ Remplacer "VOTRE_LIEN_GOOGLE_FORMS" dans reservation.html
-
-✅ FAIT :
-✓ Site créé avec 5 pages
-✓ Activités hiver et été
-✓ Tarifs et services
-✓ Plan d'accès et KeyCafe
-</textarea>
-            <div style="margin-top: 1rem;">
-                <button onclick="saveNotes()" style="background: #27ae60; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 5px; cursor: pointer;">💾 Sauvegarder</button>
-                <button onclick="clearNotes()" style="background: #e74c3c; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 5px; margin-left: 1rem; cursor: pointer;">🗑️ Effacer</button>
+        <section id="activites-detaillees">
+            <h2>🎯 Activités détaillées par saison</h2>
+            
+            <div style="background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%); padding: 2rem; border-radius: 10px; color: white; margin-bottom: 2rem;">
+                <h3 style="color: white; margin-bottom: 1rem;">❄️ HIVER - Informations pratiques</h3>
             </div>
-            <p style="color: #7f8c8d; font-size: 0.85rem; margin-top: 0.5rem;">💡 Sauvegardé dans votre navigateur</p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>🕐 Horaires domaine skiable</h3>
+                    <p><strong>Ouverture :</strong> 8h45<br>
+                    <strong>Fermeture :</strong> 16h45<br>
+                    <strong>Dernière montée :</strong> 16h15<br>
+                    <strong>Nocturne :</strong> Mercredi jusqu'à 20h (en haute saison)</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>📱 Infos en temps réel</h3>
+                    <p>
+                    🌡️ <a href="https://www.lescontamines.com/hiver/domaine-skiable/meteo" target="_blank" style="color: #3498db;">Météo en direct</a><br>
+                    🎿 <a href="https://www.lescontamines.com/hiver/domaine-skiable/etat-ouverture" target="_blank" style="color: #3498db;">État des pistes</a><br>
+                    📹 <a href="https://www.lescontamines.com/webcams" target="_blank" style="color: #3498db;">Webcams du domaine</a><br>
+                    ❄️ <a href="https://www.lescontamines.com/hiver/enneigement" target="_blank" style="color: #3498db;">Bulletin d'enneigement</a>
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3>🚡 Remontées principales</h3>
+                    <p>• Télécabine du Lay (accès rapide)<br>
+                    • Télésiège Signal (secteur familial)<br>
+                    • Télésiège Roselette (ski sportif)<br>
+                    • Tapis débutants (gratuit)</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>🎒 À ne pas oublier</h3>
+                    <p>• Crème solaire indice 50+<br>
+                    • Lunettes de ski<br>
+                    • Gants de rechange<br>
+                    • Petit sac à dos<br>
+                    • Gourde d'eau<br>
+                    • Forfait dématérialisé sur portable</p>
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #55efc4 0%, #00b894 100%); padding: 2rem; border-radius: 10px; color: white; margin: 3rem 0 2rem 0;">
+                <h3 style="color: white; margin-bottom: 1rem;">🌞 ÉTÉ - Informations pratiques</h3>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>📅 Animations du village</h3>
+                    <p><strong>Marché local :</strong> Jeudi 8h-13h<br>
+                    <strong>Concerts gratuits :</strong> Mercredi 18h (Place de l'église)<br>
+                    <strong>Fête de la montagne :</strong> Dernier week-end de juillet<br>
+                    <strong>Feu d'artifice :</strong> 14 juillet et 15 août</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>🥾 Randonnées faciles</h3>
+                    <p><strong>Cascade de la Gruvaz</strong><br>
+                    Durée : 1h30 A/R<br>
+                    Dénivelé : 200m<br>
+                    Départ : Centre village<br><br>
+                    
+                    <strong>Notre-Dame de la Gorge</strong><br>
+                    Durée : 1h A/R<br>
+                    Dénivelé : 100m<br>
+                    Site historique baroque</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>🚵 VTT - Circuits balisés</h3>
+                    <p><strong>Vert :</strong> Tour du village (10km)<br>
+                    <strong>Bleu :</strong> Boucle des Hameaux (15km)<br>
+                    <strong>Rouge :</strong> Col de Voza (25km)<br>
+                    <strong>Noir :</strong> Tour du Mont-Blanc (étape)<br>
+                    Location VTT au village</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>🏊 Activités aquatiques</h3>
+                    <p><strong>Piscine municipale</strong><br>
+                    Ouverte juillet-août<br>
+                    Horaires : 10h-19h<br>
+                    Tarif : 5€/adulte<br><br>
+                    
+                    <strong>Plan d'eau Biotope</strong><br>
+                    Lac naturel à Combloux (20km)<br>
+                    Baignade surveillée gratuite</p>
+                </div>
+            </div>
+
+            <div class="conseil-item">
+                <h3>📍 Randonnées de haute montagne</h3>
+                <p><strong>⚠️ Réservées aux randonneurs expérimentés</strong><br><br>
+                
+                <strong>Lac Jovet (2174m)</strong><br>
+                Durée : 4h A/R | Dénivelé : 700m | Difficulté : Moyenne<br>
+                Vue exceptionnelle sur le Mont-Blanc<br><br>
+                
+                <strong>Col du Bonhomme (2329m)</strong><br>
+                Durée : 6h A/R | Dénivelé : 1100m | Difficulté : Difficile<br>
+                Étape historique du Tour du Mont-Blanc<br><br>
+                
+                💡 <strong>Conseils :</strong> Équipement de montagne obligatoire, prévoir eau et nourriture, vérifier la météo, partir tôt le matin.</p>
+            </div>
+        </section>
+
+        <section id="reservation">
+            <h2>Planning & Réservation</h2>
+            
+            <div style="background: #e3f2fd; padding: 2rem; border-radius: 10px; border-left: 4px solid #2196F3; margin-bottom: 2rem;">
+                <h3 style="color: #1565C0; margin-bottom: 1rem;">📅 Consultez les disponibilités en temps réel</h3>
+                <p style="color: #1565C0; margin-bottom: 1.5rem;">
+                    Pour voir le planning à jour et faire votre demande de réservation, utilisez notre système de réservation :
+                </p>
+                <a href="VOTRE_LIEN_GOOGLE_FORMS" target="_blank" style="background: #27ae60; color: white; padding: 1rem 2rem; font-size: 1.1rem; border-radius: 5px; text-decoration: none; display: inline-block; font-weight: bold;">
+                    📝 Faire une demande de réservation
+                </a>
+                <p style="color: #7f8c8d; margin-top: 1.5rem; font-size: 0.95rem;">
+                    💡 <strong>Comment ça marche ?</strong><br>
+                    1. Consultez le calendrier Google ci-dessous pour voir les disponibilités<br>
+                    2. Cliquez sur le bouton pour remplir le formulaire de réservation<br>
+                    3. Nous vous répondons dans les 24h pour confirmer<br>
+                    4. Paiement par virement bancaire sécurisé
+                </p>
+            </div>
+
+            <div style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                <h3 style="color: #2c3e50; margin-bottom: 1rem;">📆 Calendrier des disponibilités</h3>
+                <p style="color: #7f8c8d; margin-bottom: 1.5rem;">
+                    <strong>Légende :</strong><br>
+                    🟢 Disponible | 🟠 En attente de validation | 🟣 Réservé (en attente de paiement) | 🔵 Réservé et payé
+                </p>
+                
+                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                    <p style="color: #7f8c8d; margin-bottom: 1rem;">
+                        👉 <strong>Intégrez ici votre Google Calendar public</strong>
+                    </p>
+                    <p style="color: #7f8c8d; font-size: 0.9rem;">
+                        Pour intégrer votre calendrier :<br>
+                        1. Créez un Google Calendar dédié à la location<br>
+                        2. Rendez-le public<br>
+                        3. Copiez le code d'intégration (iframe)<br>
+                        4. Remplacez cette zone par le code iframe
+                    </p>
+                    <div style="background: white; padding: 2rem; margin-top: 1rem; border: 2px dashed #ddd; border-radius: 5px;">
+                        <p style="color: #95a5a6;">
+                            📅 Votre calendrier Google apparaîtra ici
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: #fff3cd; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ffc107; margin-top: 2rem;">
+                <h3 style="color: #856404; margin-bottom: 0.5rem;">💳 Modalités de paiement</h3>
+                <p style="color: #856404;">
+                    <strong>Acompte :</strong> 30% à la réservation<br>
+                    <strong>Solde :</strong> 30 jours avant l'arrivée<br>
+                    <strong>Caution :</strong> 500€ (chèque non encaissé ou empreinte CB)<br>
+                    <strong>Mode de paiement :</strong> Virement bancaire (RIB envoyé par email)
+                </p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>📧 Email</h3>
+                    <p>cdoninderosiere@gmail.com</p>
+                </div>
+                <div class="info-card">
+                    <h3>📱 Téléphone</h3>
+                    <p>07 60 29 19 60</p>
+                </div>
+                <div class="info-card">
+                    <h3>📍 Adresse</h3>
+                    <p>130 Impasse du Bonnant<br>
+                    Les Pierres Blanches - Bâtiment F<br>
+                    74170 Les Contamines-Montjoie<br><br>
+                    <a href="https://www.google.com/maps/search/?api=1&query=130+Impasse+du+Bonnant+Les+Contamines-Montjoie" target="_blank" style="color: #3498db; font-weight: bold;">📍 Voir sur Google Maps</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="notes-admin" style="background: #fff9e6; border: 3px dashed #ffc107;">
+            <h2 style="color: #856404;">📝 Bloc-notes - Pense-bête du propriétaire</h2>
+            <div style="background: white; padding: 1.5rem; border-radius: 8px; min-height: 300px;">
+                <p style="color: #856404; font-style: italic; margin-bottom: 1rem;">
+                    Zone réservée pour noter vos idées, modifications à faire, choses à vérifier...
+                </p>
+                <textarea id="ownerNotes" style="width: 100%; min-height: 400px; padding: 1rem; border: 1px solid #ddd; border-radius: 5px; font-family: monospace; resize: vertical; font-size: 0.9rem;">📋 AMÉLIORATIONS À FAIRE - PAR ORDRE DE PRIORITÉ
+
+═══════════════════════════════════════════════════════════
+🚀 PRIORITÉ HAUTE - À FAIRE RAPIDEMENT
+═══════════════════════════════════════════════════════════
+
+📷 1. PHOTOS RÉELLES (URGENT!)
+   □ Intérieur à photographier:
+     - Séjour / Coin cuisine (3-4 photos)
+     - Chambre avec lit double (2 photos)
+     - Cabine montagne avec lits superposés (2 photos)
+     - Salle de bain avec douche (2 photos)
+     - Vue depuis les fenêtres (1 photo)
+   
+   □ Extérieur:
+     - Façade résidence Les Pierres Blanches (1 photo)
+     - Parking et accès (1 photo)
+     - Local à ski (1 photo)
+   
+   □ Alentours:
+     - Village Les Contamines (2-3 photos)
+     - Pistes de ski en hiver (2-3 photos)
+     - Restaurants proches (1-2 photos)
+   
+   □ Paysages:
+     - Vue Mont-Blanc (2 photos)
+     - Coucher de soleil montagne (1 photo)
+     - Village en été/hiver (2 photos)
+
+   💡 Conseil: Photos par temps ensoleillé, smartphone récent suffit
+   📱 Apps recommandées: Google Photos (auto-amélioration), Snapseed
+
+───────────────────────────────────────────────────────────
+
+📝 2. GOOGLE FORMS - RÉSERVATION
+   □ Créer le formulaire Google Forms
+   □ Questions à inclure:
+     - Dates début et fin
+     - Nombre de personnes
+     - Nom, Prénom
+     - Email
+     - Téléphone
+     - Message / Demandes spéciales
+   
+   □ Activer les notifications email
+   □ Créer le Google Sheet associé
+   □ Remplacer "VOTRE_LIEN_GOOGLE_FORMS" dans la page
+   
+   🔗 Lien du formulaire à créer: ___________________
+
+───────────────────────────────────────────────────────────
+
+📅 3. GOOGLE CALENDAR PUBLIC
+   □ Créer un Google Calendar dédié "Location Contamines"
+   □ Rendre le calendrier public (paramètres de partage)
+   □ Utiliser des couleurs pour les statuts:
+     🟢 Vert = Disponible
+     🟠 Orange = Demande en attente
+     🟣 Violet = Validé, en attente paiement
+     🔵 Bleu = Payé et confirmé
+   
+   □ Obtenir le code iframe d'intégration
+   □ Remplacer la zone dans section "Réservation"
+   
+   🔗 Lien du calendrier: ___________________
+
+═══════════════════════════════════════════════════════════
+📝 PRIORITÉ MOYENNE - DANS LES PROCHAINES SEMAINES
+═══════════════════════════════════════════════════════════
+
+🎥 4. VIDÉO DE PRÉSENTATION
+   □ Filmer avec smartphone (1-2 minutes):
+     - Trajet parking → entrée résidence
+     - Accès avec boîte à clés KeyCafe
+     - Tour de l'appartement pièce par pièce
+     - Vue depuis les fenêtres
+     - Local à ski
+   
+   □ Montage simple (apps: iMovie, InShot, CapCut)
+   □ Upload sur YouTube (compte dédié)
+   □ Intégrer la vidéo dans section Photos
+   
+   💡 Filmer en mode paysage, stabiliser le téléphone
+
+───────────────────────────────────────────────────────────
+
+🔍 5. SEO & RÉFÉRENCEMENT
+   □ Choisir un nom de domaine:
+     Idées: contamines-location.fr / location-contamines.com
+   
+   □ Améliorer le référencement:
+     - Ajouter meta description (voir code HTML)
+     - Ajouter meta keywords
+     - Créer compte Google My Business
+     - S'inscrire sur sites d'annonces (LeBonCoin, PAP Vacances)
+   
+   □ Réseaux sociaux:
+     - Créer page Facebook "Location Contamines-Montjoie"
+     - Créer compte Instagram dédié
+     - Poster régulièrement photos et dispo
+
+───────────────────────────────────────────────────────────
+
+📋 6. DOCUMENTS À CRÉER / COMPLÉTER
+   □ Créer PDF "Checklist arrivée/départ" (Google Docs)
+   □ Créer PDF "Règlement intérieur" à imprimer
+   □ Créer PDF "Guide de l'appartement":
+     - WiFi (nom réseau + mot de passe)
+     - Mode d'emploi chauffage
+     - Mode d'emploi électroménager
+     - Numéros d'urgence
+     - Bonnes adresses du village
+   
+   □ Template email de confirmation
+   □ Template email rappel avant arrivée (48h avant)
+
+═══════════════════════════════════════════════════════════
+🎯 AMÉLIORATIONS LONG TERME - SI LE SITE MARCHE BIEN
+═══════════════════════════════════════════════════════════
+
+9. COORDONNÉES DÉTAILLÉES SERVICES
+   □ Compléter horaires d'ouverture précis:
+     - Supermarché Carrefour (☎ 04 50 47 00 50)
+     - Spar (☎ _____________)
+     - Boulangerie L'Épi d'Or (☎ 04 50 47 00 25)
+     - Pharmacie (☎ 04 50 47 00 12)
+     - Médecin (☎ 04 50 47 01 23)
+   
+   □ Ajouter sites web
+   □ Préciser services de livraison disponibles
+   □ Cartes acceptées (CB, chèques vacances...)
+
+───────────────────────────────────────────────────────────
+
+10. POLITIQUE DE RÉSERVATION DÉTAILLÉE
+   □ Rédiger conditions d'annulation précises:
+     - Plus de 30 jours: remboursement intégral - __ %
+     - Entre 30 et 15 jours: remboursement __ %
+     - Moins de 15 jours: remboursement __ %
+   
+   □ Préciser modalités acompte et solde
+   □ Détailler gestion de la caution:
+     - Montant: 500€
+     - Mode: chèque ou empreinte CB
+     - Restitution: sous 7 jours si pas de dégâts
+     - Motifs de retenue sur caution
+   
+   □ Proposer assurance annulation partenaire
+     (Allianz, Axa, April...)
+
+───────────────────────────────────────────────────────────
+
+💰 BUDGET & INVESTISSEMENTS FUTURS
+   □ Nom de domaine + hébergement: 50-100€/an
+   □ Système de réservation pro (Lodgify, Smoobu): 20-50€/mois
+   □ Photos professionnelles (si besoin): 200-300€
+   □ Site complet avec développeur: 1500-3000€
+
+═══════════════════════════════════════════════════════════
+📌 NOTES PERSONNELLES & IDÉES
+═══════════════════════════════════════════════════════════
+
+[Espace libre pour vos notes...]
+
+
+
+
+
+═══════════════════════════════════════════════════════════
+✅ TÂCHES COMPLÉTÉES
+═══════════════════════════════════════════════════════════
+✓ Création du site web de base
+✓ Section Avis clients ajoutée
+✓ FAQ complète créée
+✓ Règlement intérieur rédigé
+✓ Inventaire et checklist arrivée/départ
+✓ Activités détaillées été et hiver
+✓ Mode d'emploi KeyCafe détaillé
+✓ Plans Google Maps interactifs
+✓ Optimisation mobile
+</textarea>
+                <button onclick="saveNotes()" style="background: #27ae60; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 5px; margin-top: 1rem; cursor: pointer;">
+                    💾 Sauvegarder mes notes
+                </button>
+                <button onclick="clearNotes()" style="background: #e74c3c; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 5px; margin-top: 1rem; margin-left: 1rem; cursor: pointer;">
+                    🗑️ Effacer
+                </button>
+                <p style="color: #7f8c8d; font-size: 0.9rem; margin-top: 1rem;">
+                    💡 Note : Ces notes sont stockées localement dans votre navigateur
+                </p>
+            </div>
         </section>
     </div>
 
@@ -208,6 +1916,38 @@
     </footer>
 
     <script>
+        // Filtre de la galerie photos
+        function filterGallery(category) {
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Filtrer par "extérieur" au chargement de la page
+        window.addEventListener('DOMContentLoaded', function() {
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach(item => {
+                if (item.dataset.category === 'exterieur') {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Charger les notes sauvegardées
+            loadNotes();
+        });
+
+        // Gestion des notes du bloc-notes
         function saveNotes() {
             const notes = document.getElementById('ownerNotes').value;
             localStorage.setItem('ownerNotes', notes);
@@ -215,18 +1955,80 @@
         }
 
         function clearNotes() {
-            if (confirm('Effacer toutes les notes ?')) {
+            if (confirm('Êtes-vous sûr de vouloir effacer toutes vos notes ?')) {
                 document.getElementById('ownerNotes').value = '';
                 localStorage.removeItem('ownerNotes');
+                alert('🗑️ Notes effacées');
             }
         }
 
-        window.addEventListener('DOMContentLoaded', function() {
+        function loadNotes() {
             const notes = localStorage.getItem('ownerNotes');
             if (notes) {
                 document.getElementById('ownerNotes').value = notes;
             }
-        });
+        }
+
+        // Fenêtre ingrédients de cuisine
+        function openIngredientsWindow() {
+            const ingredients = `
+LISTE COMPLÈTE DES INGRÉDIENTS DE CUISINE
+
+═══════════════════════════════════════════
+
+HUILES & CONDIMENTS:
+• Huile d'olive
+• Huile de tournesol
+• Vinaigre balsamique
+• Vinaigre de vin blanc
+• Moutarde de Dijon
+• Ketchup
+• Mayonnaise
+
+ÉPICES & AROMATES:
+• Sel fin et gros sel
+• Poivre noir moulu
+• Herbes de Provence
+• Thym séché
+• Laurier
+• Paprika
+• Curry en poudre
+• Ail (têtes fraîches)
+• Oignons
+
+BASIQUES:
+• Farine T55
+• Sucre en poudre
+• Sucre vanillé
+• Café moulu
+• Thé (English Breakfast, Earl Grey)
+• Bouillon cube (légumes, volaille)
+• Cube de bouillon KUB
+• Pâtes (spaghetti, penne)
+• Riz blanc
+
+AUTRES:
+• Miel
+• Confiture (fraise, abricot)
+• Chocolat en poudre
+• Beurre demi-sel (dans le frigo)
+
+═══════════════════════════════════════════
+            `;
+            const win = window.open('', 'Ingrédients', 'width=600,height=800');
+            win.document.write('<html><head><title>Liste des ingrédients</title>');
+            win.document.write('<style>body{font-family:monospace;padding:2rem;background:#f8f9fa;} pre{background:white;padding:2rem;border-radius:10px;line-height:1.8;}</style>');
+            win.document.write('</head><body>');
+            win.document.write('<h1>Liste des ingrédients de cuisine</h1>');
+            win.document.write('<pre>' + ingredients + '</pre>');
+            win.document.write('<button onclick="window.print()" style="background:#3498db;color:white;padding:1rem 2rem;border:none;border-radius:5px;cursor:pointer;font-size:1rem;margin-top:1rem;">🖨️ Imprimer</button>');
+            win.document.write('</body></html>');
+        }
+
+        // Télécharger l'inventaire PDF (simulé)
+        function downloadInventory() {
+            alert('📄 Fonctionnalité à venir !\n\nVous pourrez bientôt télécharger la checklist d\'arrivée/départ en PDF.\n\nEn attendant, vous pouvez imprimer la section "Inventaire & État des lieux" de cette page.');
+        }
     </script>
 </body>
 </html>
