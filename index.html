@@ -1,35 +1,3 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Location Appartement - Contamines-Montjoie</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
-        header { background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%); color: white; padding: 2rem 0; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        header p { font-size: 1.2rem; opacity: 0.9; }
-        nav { background: #34495e; padding: 1rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; }
-        nav a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s; font-size: 1.1rem; }
-        nav a:hover { color: #3498db; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        section { margin: 3rem 0; padding: 2rem; background: white; border-radius: 10px; box-shadow: 0 2px 15px rgba(0,0,0,0.1); }
-        h2 { color: #2c3e50; margin-bottom: 1.5rem; font-size: 2rem; border-bottom: 3px solid #3498db; padding-bottom: 0.5rem; }
-        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
-        .info-card { background: #ecf0f1; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #3498db; }
-        .info-card h3 { color: #2c3e50; margin-bottom: 0.5rem; }
-        footer { background: #2c3e50; color: white; text-align: center; padding: 2rem; margin-top: 3rem; }
-    </style>
-</head>
-<body>
-
-<header>
-    <h1>🏔️ Appartement Les Contamines-Montjoie</h1>
-    <p>Votre refuge au cœur des Alpes</p>
-</header>
-
 <nav>
     <ul>
         <li><a href="index.html">Accueil</a></li>
@@ -41,21 +9,185 @@
 </nav>
 
 <div class="container">
+    <!-- PRÉSENTATION -->
+    <section id="presentation">
+        <h2>Présentation</h2>
+        <p style="font-size: 1.1rem; line-height: 1.8;">
+            Bienvenue dans notre charmant studio situé aux Contamines-Montjoie, village authentique au pied du Mont-Blanc. 
+            Idéal pour les amoureux de la montagne, notre logement vous offre confort et tranquillité, que ce soit pour un séjour 
+            en hiver sur les pistes de ski ou en été pour découvrir les magnifiques sentiers de randonnée.
+        </p>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>🏠 Capacité</h3>
+                <p>4 personnes</p>
+            </div>
+            <div class="info-card">
+                <h3>🛏️ Couchages</h3>
+                <p>1 lit double + cabine montagne (2 lits superposés)</p>
+            </div>
+            <div class="info-card">
+                <h3>🚿 Salle de bain</h3>
+                <p>Douche + WC séparé</p>
+            </div>
+            <div class="info-card">
+                <h3>📏 Surface</h3>
+                <p>20 m²</p>
+            </div>
+            <div class="info-card">
+                <h3>📺 Multimédia</h3>
+                <p>TV, WiFi Box 5G<br>
+                <small>Clés WiFi à la demande ou QR code à scanner sur place</small></p>
+            </div>
+            <div class="info-card">
+                <h3>🎿 Extras</h3>
+                <p>Local à ski, parking gratuit</p>
+            </div>
+        </div>
+    </section>
 
-<section id="presentation">
-    <h2>Présentation</h2>
-    <p style="font-size: 1.1rem; line-height: 1.8;">
-        Bienvenue dans notre charmant studio situé aux Contamines-Montjoie, village authentique au pied du Mont-Blanc. 
-        Idéal pour les amoureux de la montagne, notre logement vous offre confort et tranquillité, que ce soit pour un séjour 
-        en hiver sur les pistes de ski ou en été pour découvrir les magnifiques sentiers de randonnée.
-    </p>
-</section>
+    <!-- PHOTOS -->
+    <section id="photos">
+        <h2>Galerie Photos</h2>
+        
+        <div class="gallery-categories">
+            <button class="category-btn active" onclick="filterGallery('all')">Tout</button>
+            <button class="category-btn" onclick="filterGallery('interieur')">🏠 Intérieur</button>
+            <button class="category-btn" onclick="filterGallery('exterieur')">🏔️ Extérieur</button>
+            <button class="category-btn" onclick="filterGallery('alentours')">📍 Alentours</button>
+            <button class="category-btn" onclick="filterGallery('paysage')">🌄 Paysage</button>
+        </div>
 
+        <div class="gallery" id="photoGallery">
+            <div class="gallery-item" data-category="interieur"><span>📷 Séjour</span></div>
+            <div class="gallery-item" data-category="interieur"><span>📷 Cuisine</span></div>
+            <div class="gallery-item" data-category="interieur"><span>📷 Chambre</span></div>
+            <div class="gallery-item" data-category="interieur"><span>📷 Salle de bain</span></div>
+            <div class="gallery-item" data-category="exterieur"><span>📷 Résidence</span></div>
+            <div class="gallery-item" data-category="exterieur"><span>📷 Parking</span></div>
+            <div class="gallery-item" data-category="alentours"><span>📷 Village</span></div>
+            <div class="gallery-item" data-category="alentours"><span>📷 Pistes</span></div>
+            <div class="gallery-item" data-category="paysage"><span>📷 Mont-Blanc</span></div>
+        </div>
+    </section>
+
+    <!-- RÉSIDENCE -->
+    <section id="residence">
+        <h2>🏔️ La Résidence - Hameaux des Lays</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+            Notre appartement se situe dans la résidence <strong>Hameaux des Lays</strong>, un ensemble d'environ 20 bâtiments de montagne regroupant près de 1000 appartements. Au rez-de-chaussée et proche des navettes.
+        </p>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>🥐 Boulangerie</h3>
+                <p>Annexe de la boulangerie du village<br>Pain frais, viennoiseries</p>
+            </div>
+            <div class="info-card">
+                <h3>🛒 Sherpa</h3>
+                <p>Commerce d'alimentation<br><small>Ouvert pendant la saison touristique</small></p>
+            </div>
+            <div class="info-card">
+                <h3>🍺 Bar</h3>
+                <p>Bar de la résidence<br>Ambiance montagne</p>
+            </div>
+            <div class="info-card">
+                <h3>🧹 Conciergerie</h3>
+                <p>Services sur place<br><a href="#" style="color: #3498db;">📄 Voir les prestations (PDF)</a></p>
+            </div>
+            <div class="info-card">
+                <h3>🍽️ Restaurant Hôtel ⭐⭐⭐⭐</h3>
+                <p>Restaurant de l'hôtel 4 étoiles<br>Cuisine gastronomique</p>
+            </div>
+            <div class="info-card">
+                <h3>🦌 La Biche</h3>
+                <p>Resto-brunch à thème<br>+ Espace soins & bien-être<br><strong>À 500m</strong></p>
+            </div>
+            <div class="info-card">
+                <h3>🎿 Location de ski</h3>
+                <p>Disponible sur place<br><strong>À 200m - 2 min à pied</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MATÉRIEL -->
+    <section id="materiel">
+        <h2>Équipements & Matériel</h2>
+        
+        <h3 style="color: #3498db; margin-top: 1rem;">🍳 Cuisine</h3>
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>Électroménager</h3>
+                <p>• Plaques électriques x2<br>
+                • Micro-ondes<br>
+                • Réfrigérateur<br>
+                • Cafetière Nespresso<br>
+                • Bouilloire, Grille-pain<br>
+                • Raclette, Fondue</p>
+            </div>
+            <div class="info-card">
+                <h3>Vaisselle</h3>
+                <p>• Set complet <strong>12 couverts</strong><br>
+                • Assiettes plates, creuses, dessert<br>
+                • Verres, tasses, bols<br>
+                • Couverts complets<br>
+                • Casseroles, Poêles<br>
+                • Ustensiles de cuisine</p>
+            </div>
+        </div>
+
+        <h3 style="color: #3498db; margin-top: 2rem;">🛏️ Chambre & Linge</h3>
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>Literie</h3>
+                <p>• Lit double 140x200<br>
+                • Lits superposés 90x200 (cabine)<br>
+                • Oreillers (4), Couettes (3)</p>
+            </div>
+            <div class="info-card">
+                <h3>Linge fourni</h3>
+                <p>• Draps et housses de couette<br>
+                • Taies d'oreiller<br>
+                • Serviettes sur demande<br>
+                • Torchons cuisine (6)</p>
+            </div>
+        </div>
+
+        <h3 style="color: #3498db; margin-top: 2rem;">🎿 Annexes</h3>
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>Local à skis</h3>
+                <p>• Casier personnel<br>
+                • Au RDC près des boîtes aux lettres</p>
+            </div>
+            <div class="info-card">
+                <h3>Parking</h3>
+                <p>• Place extérieure gratuite<br>
+                • Accès par télécommande (bip)<br>
+                <small>💡 À l'arrivée : garez-vous sur les places visiteurs, récupérez le bip dans l'appartement, puis déplacez votre voiture</small></p>
+            </div>
+        </div>
+    </section>
 </div>
 
 <footer>
     <p>&copy; 2024 Location Contamines-Montjoie - Tous droits réservés</p>
 </footer>
 
-</body>
-</html>
+<script>
+    function filterGallery(category) {
+        const buttons = document.querySelectorAll('.category-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+        
+        const items = document.querySelectorAll('.gallery-item');
+        items.forEach(item => {
+            if (category === 'all' || item.dataset.category === category) {
+                item.style.display = 'flex';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+</script>
